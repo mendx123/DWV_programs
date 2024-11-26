@@ -1,0 +1,50 @@
+from nltk.tokenize import RegexpTokenizer
+from pdfminer.high_level import extract_text
+from nltk.probability import FreqDist
+#
+# Extract the text from PDF file
+#
+text = extract_text('/Users/apple/Downloads/2010.00462.pdf')
+#
+# Create an instance of tokenizer using NLTK ResexpTokenizer
+#
+tokenizer = RegexpTokenizer('\w+')
+#
+# Tokenize the text read from PDF
+#
+tokens = tokenizer.tokenize(text)
+#
+# Find Frequency Distribution
+#
+freqdist = FreqDist(tokens)
+#
+# Find words whose length is greater than 5 and frequency greater than 20
+#
+long_frequent_words = [words for words in tokens if len(words) > 5 and freqdist[words] > 20]
+
+
+
+                             OR
+
+
+/******************google colab************************************/
+/***********************************************************/
+from nltk.tokenize import RegexpTokenizer
+from nltk.probability import FreqDist
+from pdfminer.high_level import extract_text
+text=extract_text('2010.00462.pdf')
+tokenizer=RegexpTokenizer('\w+')
+tokens=tokenizer.tokenize(text)
+freqdist=FreqDist(tokens)
+long_freq_words= [words for words in tokens if len(words) > 5 and freqdist[words] > 20]
+long_freq_words
+FreqDist(long_freq_words).plot()
+
+from google.colab import files
+files.upload()
+
+/**************************************************************/
+
+
+
+
